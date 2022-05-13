@@ -417,7 +417,7 @@ public class ControllerGameField {
         }
     }
 
-    //Muestra el personaje seleccionado.
+    //Muestra el personaje seleccionado
     public void characterChoosed(File charinfo) throws IOException {
         FileReader fr= new FileReader(charinfo);
         LineNumberReader lnr= new LineNumberReader(fr);
