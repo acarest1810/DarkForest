@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.darkforest.darkforest.Controladores.ControllerSetCharacter">
+   <children>
+      <RadioButton fx:id="rbSirQovun" layoutX="33.0" layoutY="95.0" mnemonicParsing="false" text="Sir Qovun">
+         <toggleGroup>
+            <ToggleGroup fx:id="select" />
+         </toggleGroup>
+      </RadioButton>
+      <Button fx:id="btConfirm" layoutX="534.0" layoutY="355.0" mnemonicParsing="false" onAction="#confirm" text="Confirm" />
+      <ImageView fx:id="imgviewSirQovun" fitHeight="85.0" fitWidth="83.0" layoutX="28.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <RadioButton fx:id="rbDarki" layoutX="139.0" layoutY="95.0" mnemonicParsing="false" text="Darki" toggleGroup="$select" />
+      <ImageView fx:id="imgviewDarki" fitHeight="85.0" fitWidth="83.0" layoutX="122.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>
