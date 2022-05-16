@@ -7,5 +7,9 @@
 }
 
 #labelTxt{
-    -fx-text-fill: green
+    -fx-text-fill: pink
+}
+
+#statusLabel{
+    -fx-text-fill: pink
 }

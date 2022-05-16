@@ -39,10 +39,12 @@ public class ControllerGameField {
     private ImageView statusImgView;
     @javafx.fxml.FXML
     private Label statusLabel;
+    @javafx.fxml.FXML
+    private ImageView imgViewShield1;
 
     //Variables para controlar el juego
     String name="",keytype="";
-    int hp=0,slots=0,hptotal=0,sizeX=10,sizeY=10,totalX=0,countKey=0,countFalseKey=0,slotsfilled=0;
+    int hp=0,slots=0,hptotal=0,sizeX=10,sizeY=10,totalX=0,countKey=0,countFalseKey=0,slotsfilled=0,shieldcount=0;
     int[] inventory;
     double posXActual, posYActual,posXAnterior,posYAnterior;
     //Diferentes estados de las llaves y detección del final del juego
@@ -63,7 +65,9 @@ public class ControllerGameField {
     //12 = El jugador está en el molde; 13 = Donde se ha generado el molde; 14 = El jugador sabe donde está el molde
     //15 = El jugador está en el cubo de pintura; 16 = Donde se ha generado el cubo de pintura; 17 = El jugador sabe donde está el cubo de pintura
     //18 = El jugador está en la torre; 19 = Donde se ha generado la torre; 20 = El jugador sabe donde está la torre
+    //21 = El jugador está en un escudo; 22 = Donde se ha generado un escudo; 23 = El jugador sabe donde estaba un escudo
     int[][] statusTable;
+
 
     public void initialize() throws IOException {
         File charinfo=new File("src/main/characterinfo/personaje.txt");
@@ -140,6 +144,15 @@ public class ControllerGameField {
                 i++;
             }
         }while(i<1);
+        i=0;
+        do{
+            double posTowerX=Math.random()*sizeX;
+            double posTowerY=Math.random()*sizeY;
+            if(statusTable[(int) posTowerX][(int) posTowerY]==0){
+                statusTable[(int) posTowerX][(int) posTowerY]=22;
+                i++;
+            }
+        }while(i<1);
     }
 
     //Actualiza la zona anterior y actual del jugador
@@ -149,6 +162,7 @@ public class ControllerGameField {
         if((statusTable[(int) y][(int) x]==0) || (statusTable[(int) y][(int) x]==2)){
             statusImgView.setImage(null);
             statusTable[(int) y][(int) x]=1;
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==4) || (statusTable[(int) y][(int) x]==3)){
             statusImgView.setImage(null);
             if(statusTable[(int) y][(int) x]==4){
@@ -171,6 +185,7 @@ public class ControllerGameField {
             }else{
                 statusTable[(int) y][(int) x]=5;
             }
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==6) || (statusTable[(int) y][(int) x]==7)){
             statusImgView.setImage(null);
             if(statusTable[(int) y][(int) x]==6){
@@ -193,6 +208,7 @@ public class ControllerGameField {
             }else{
                 statusTable[(int) y][(int) x]=8;
             }
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==10) || (statusTable[(int) y][(int) x]==11)){
             Image img=getPngImage("door");
             statusImgView.setImage(img);
@@ -200,6 +216,7 @@ public class ControllerGameField {
             if(fullKey){
                 isFinished=true;
             }
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==13) || (statusTable[(int) y][(int) x]==14)){
             Image img=getPngImage("mold");
             statusImgView.setImage(img);
@@ -234,6 +251,7 @@ public class ControllerGameField {
                     itemsArrayImageView[dyedPiece3.getPiece()].setImage(null);
                 }
             }
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==16) || (statusTable[(int) y][(int) x]==17)){
             Image img=getPngImage("paint");
             statusImgView.setImage(img);
@@ -277,11 +295,25 @@ public class ControllerGameField {
                     dyedKey3=true;
                 }
             }
+            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==19) || (statusTable[(int) y][(int) x]==20)){
             Image img=getPngImage("tower");
             statusImgView.setImage(img);
             statusTable[(int) y][(int) x]=18;
             statusLabel.setText("Enemy 1:\nX = "+grunt.getPosX()+"\nY = "+grunt.getPosY()+"\nEnemy 2:\nX = "+grunt2.getPosX()+"\nY = "+grunt2.getPosY());
+        }else if((statusTable[(int) y][(int) x]==22)){
+            statusImgView.setImage(null);
+            statusTable[(int) y][(int) x]=21;
+            shieldcount++;
+            if(shieldcount==1){
+                Image imageShield=getPngImage("shield");
+                imgViewShield1.setImage(imageShield);
+            }
+            statusLabel.setText("");
+        }else if((statusTable[(int) y][(int) x]==23)){
+            statusImgView.setImage(null);
+            statusTable[(int) y][(int) x]=21;
+            statusLabel.setText("");
         }
     }
 
@@ -314,7 +346,10 @@ public class ControllerGameField {
             Image image = getPngImage("tower");
             arrayImageView[(int) y][(int) x].setImage(image);
             statusTable[(int) y][(int) x]=20;
-            statusLabel.setText("");
+        }else if(statusTable[(int) y][(int) x]==21){
+            Image image = getPngImage("blue");
+            arrayImageView[(int) y][(int) x].setImage(image);
+            statusTable[(int) y][(int) x]=23;
         }
     }
 
@@ -492,10 +527,19 @@ public class ControllerGameField {
         if(((int) posXActual==enemy.getPosX()) && ((int) posYActual==enemy.getPosY())){
             enemy.setPosX((int) (Math.random() * 10));
             enemy.setPosY((int) (Math.random() * 10));
-            pj.setHp(pj.getHp()-1);
-            labelTxt.setText(pj.getHp()+"/"+hptotal);
-            Image img=getPngImage("grunt");
-            statusImgView.setImage(img);
+            switch (shieldcount){
+                case 0:
+                    pj.setHp(pj.getHp()-1);
+                    labelTxt.setText(pj.getHp()+"/"+hptotal);
+                    Image img=getPngImage("grunt");
+                    statusImgView.setImage(img);
+                    break;
+                case 1:
+                    imgViewShield1.setImage(null);
+                    Image img2=getPngImage("grunt");
+                    statusImgView.setImage(img2);
+                    break;
+            }
         }
     }
 
