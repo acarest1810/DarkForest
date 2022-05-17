@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -23,6 +24,12 @@ public class ControllerMainMenu {
     private Button bttCharacter;
     @FXML
     private Text txtTitle;
+    @FXML
+    private Button btHowTo;
+    @FXML
+    private Pane pane;
+    @FXML
+    private Button btAbout;
 
     public void initialize() throws IOException {
         File charinfo=new File("src/main/characterinfo/personaje.txt");
@@ -69,5 +76,13 @@ public class ControllerMainMenu {
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void howTo(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void about(ActionEvent actionEvent) {
     }
 }

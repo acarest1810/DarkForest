@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -29,11 +30,18 @@ public class ControllerSetCharacter {
     private File charinfo = new File("src/main/characterinfo/personaje.txt");
     @javafx.fxml.FXML
     private ImageView imgviewDarki;
+    @javafx.fxml.FXML
+    private ImageView imgviewMark;
+    @javafx.fxml.FXML
+    private RadioButton rbMark;
+    @javafx.fxml.FXML
+    private Pane pane;
 
     public void initialize() throws IOException {
         detectCharacter();
         setImgview("src/main/resources/Characters/sir_qovun.png",imgviewSirQovun);
         setImgview("src/main/resources/Characters/Darki.png",imgviewDarki);
+        setImgview("src/main/resources/Characters/Mark.png",imgviewMark);
     }
 
     //Setea la imagen, ahorra código
@@ -54,13 +62,15 @@ public class ControllerSetCharacter {
         FileReader fr = new FileReader(charinfo);
         LineNumberReader lnr = new LineNumberReader(fr);
         String nombre=lnr.readLine();
-        System.out.println(nombre);
         switch (nombre){
             case "Sir Qovun":
                 rbSirQovun.setSelected(true);
                 break;
             case "Darki":
                 rbDarki.setSelected(true);
+                break;
+            case "Mark":
+                rbMark.setSelected(true);
                 break;
         }
     }
@@ -76,7 +86,7 @@ public class ControllerSetCharacter {
             charwritter.write("\n");
             charwritter.write("3");
             charwritter.write("\n");
-            charwritter.write("6");
+            charwritter.write("7");
             charwritter.write("\n");
             charwritter.write("black");
             charwritter.close();
@@ -88,6 +98,15 @@ public class ControllerSetCharacter {
             charwritter.write("7");
             charwritter.write("\n");
             charwritter.write("red");
+            charwritter.close();
+        }else if(rbMark.isSelected()){
+            charwritter.write("Mark");
+            charwritter.write("\n");
+            charwritter.write("1");
+            charwritter.write("\n");
+            charwritter.write("7");
+            charwritter.write("\n");
+            charwritter.write("white");
             charwritter.close();
         }
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("main-menu.fxml"));

@@ -181,6 +181,13 @@ public class ControllerGameField {
                         case 2 -> setItems("3-red-key");
                     }
                 }
+                if(pj.getKeytype().equals("white")) {
+                    switch (countKey) {
+                        case 0 -> setItems("1-white-key");
+                        case 1 -> setItems("2-white-key");
+                        case 2 -> setItems("3-white-key");
+                    }
+                }
                 countKey++;
             }else{
                 statusTable[(int) y][(int) x]=5;
@@ -202,6 +209,13 @@ public class ControllerGameField {
                         case 0 -> setItems("1-red-key");
                         case 1 -> setItems("2-red-key");
                         case 2 -> setItems("3-red-key");
+                    }
+                }
+                if(pj.getKeytype().equals("white")) {
+                    switch (countFalseKey) {
+                        case 0 -> setItems("1-black-key");
+                        case 1 -> setItems("2-black-key");
+                        case 2 -> setItems("3-black-key");
                     }
                 }
                 countFalseKey++;
@@ -234,6 +248,12 @@ public class ControllerGameField {
                     itemsArrayImageView[piece1.getPiece()].setImage(imageKey);
                     itemsArrayImageView[piece2.getPiece()].setImage(null);
                     itemsArrayImageView[piece3.getPiece()].setImage(null);
+                }else if(pj.getKeytype().equals("white")){
+                    fullKey=true;
+                    Image imageKey=getPngImage("full-white-key");
+                    itemsArrayImageView[piece1.getPiece()].setImage(imageKey);
+                    itemsArrayImageView[piece2.getPiece()].setImage(null);
+                    itemsArrayImageView[piece3.getPiece()].setImage(null);
                 }
             }
             if((dyedKey1)&&(dyedKey2)&&(dyedKey3)){
@@ -246,6 +266,12 @@ public class ControllerGameField {
                 }else if(pj.getKeytype().equals("red")){
                     fullKey=true;
                     Image imageKey=getPngImage("full-red-key");
+                    itemsArrayImageView[dyedPiece1.getPiece()].setImage(imageKey);
+                    itemsArrayImageView[dyedPiece2.getPiece()].setImage(null);
+                    itemsArrayImageView[dyedPiece3.getPiece()].setImage(null);
+                }else if(pj.getKeytype().equals("white")){
+                    fullKey=true;
+                    Image imageKey=getPngImage("full-white-key");
                     itemsArrayImageView[dyedPiece1.getPiece()].setImage(imageKey);
                     itemsArrayImageView[dyedPiece2.getPiece()].setImage(null);
                     itemsArrayImageView[dyedPiece3.getPiece()].setImage(null);
@@ -267,6 +293,11 @@ public class ControllerGameField {
                     itemsArrayImageView[pieceFalse1.getPiece()].setImage(imageKey);
                     dyedPiece1=new Item(pieceFalse1.getPiece());
                     dyedKey1=true;
+                }else if(pj.getKeytype().equals("white")){
+                    Image imageKey= getPngImage("1-white-key");
+                    itemsArrayImageView[pieceFalse1.getPiece()].setImage(imageKey);
+                    dyedPiece1=new Item(pieceFalse1.getPiece());
+                    dyedKey1=true;
                 }
             }
             if(falseKey2) {
@@ -280,6 +311,11 @@ public class ControllerGameField {
                     itemsArrayImageView[pieceFalse2.getPiece()].setImage(imageKey);
                     dyedPiece2=new Item(pieceFalse2.getPiece());
                     dyedKey2=true;
+                }else if(pj.getKeytype().equals("white")){
+                    Image imageKey= getPngImage("2-white-key");
+                    itemsArrayImageView[pieceFalse2.getPiece()].setImage(imageKey);
+                    dyedPiece2=new Item(pieceFalse2.getPiece());
+                    dyedKey2=true;
                 }
             }
             if(falseKey3) {
@@ -290,6 +326,11 @@ public class ControllerGameField {
                     dyedKey3=true;
                 }else if(pj.getKeytype().equals("red")){
                     Image imageKey= getPngImage("3-red-key");
+                    itemsArrayImageView[pieceFalse3.getPiece()].setImage(imageKey);
+                    dyedPiece3=new Item(pieceFalse3.getPiece());
+                    dyedKey3=true;
+                }else if(pj.getKeytype().equals("white")){
+                    Image imageKey= getPngImage("3-white-key");
                     itemsArrayImageView[pieceFalse3.getPiece()].setImage(imageKey);
                     dyedPiece3=new Item(pieceFalse3.getPiece());
                     dyedKey3=true;
@@ -465,6 +506,8 @@ public class ControllerGameField {
             setImgvCharacter("src/main/resources/Characters/sir_qovun.png");
         }else if(pj.getName().equals("Darki")){
             setImgvCharacter("src/main/resources/Characters/Darki.png");
+        }else if(pj.getName().equals("Mark")){
+            setImgvCharacter("src/main/resources/Characters/Mark.png");
         }
     }
 
@@ -538,6 +581,7 @@ public class ControllerGameField {
                     imgViewShield1.setImage(null);
                     Image img2=getPngImage("grunt");
                     statusImgView.setImage(img2);
+                    shieldcount--;
                     break;
             }
         }
