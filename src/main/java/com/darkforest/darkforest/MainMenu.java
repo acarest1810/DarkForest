@@ -12,6 +12,8 @@ public class MainMenu extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();

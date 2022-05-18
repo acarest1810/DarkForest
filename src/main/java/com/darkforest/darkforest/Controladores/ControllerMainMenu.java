@@ -32,7 +32,7 @@ public class ControllerMainMenu {
     private Button btAbout;
 
     public void initialize() throws IOException {
-        File charinfo=new File("src/main/characterinfo/personaje.txt");
+        File charinfo=new File("D:\\IdeaProjects\\DarkForest\\src\\main\\resources\\characterinfo\\personaje.txt");
         //Información del personaje utilizado por defecto si no ha jugado antes
         if(!charinfo.exists()){
             charinfo.createNewFile();
@@ -68,10 +68,12 @@ public class ControllerMainMenu {
     @FXML
     public void selectCharacter(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("select-character.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),650,450);
+        Scene scene = new Scene(fxmlLoader.load(),600,400);
         Stage stage = new Stage();
-        stage.setMinWidth(650);
-        stage.setMinHeight(450);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
+        stage.setMaxWidth(750);
+        stage.setMaxHeight(550);
         stage.setTitle("Select Character");
         stage.setScene(scene);
         stage.show();
@@ -79,7 +81,18 @@ public class ControllerMainMenu {
     }
 
     @FXML
-    public void howTo(ActionEvent actionEvent) {
+    public void howTo(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("how-to-play.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),650,450);
+        Stage stage = new Stage();
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
+        stage.setMaxWidth(750);
+        stage.setMaxHeight(550);
+        stage.setTitle("Dark Forest");
+        stage.setScene(scene);
+        stage.show();
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     @FXML

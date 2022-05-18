@@ -70,7 +70,7 @@ public class ControllerGameField {
 
 
     public void initialize() throws IOException {
-        File charinfo=new File("src/main/characterinfo/personaje.txt");
+        File charinfo=new File("D:\\IdeaProjects\\DarkForest\\src\\main\\resources\\characterinfo\\personaje.txt");
         characterChoosed(charinfo);
         inventory = new int[pj.getSlots()];
         setHeart();

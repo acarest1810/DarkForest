@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,8 @@ public class ControllerWinScreen {
 
     @javafx.fxml.FXML
     private Button btReturn;
+    @javafx.fxml.FXML
+    private Pane pane;
 
     @javafx.fxml.FXML
     public void returnToMainMenu(ActionEvent actionEvent) throws IOException {

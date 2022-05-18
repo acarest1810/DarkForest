@@ -5,19 +5,29 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@selectcharacter.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.darkforest.darkforest.Controladores.ControllerSetCharacter">
    <children>
-      <RadioButton fx:id="rbSirQovun" layoutX="74.0" layoutY="95.0" mnemonicParsing="false" text="Sir Qovun">
+      <RadioButton fx:id="rbSirQovun" layoutX="73.0" layoutY="259.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="109.0" text="Sir Qovun">
          <toggleGroup>
             <ToggleGroup fx:id="select" />
          </toggleGroup>
+         <font>
+            <Font size="15.0" />
+         </font>
       </RadioButton>
       <Button fx:id="btConfirm" layoutX="534.0" layoutY="355.0" mnemonicParsing="false" onAction="#confirm" text="Confirm" />
-      <ImageView fx:id="imgviewSirQovun" fitHeight="85.0" fitWidth="83.0" layoutX="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <RadioButton fx:id="rbDarki" layoutX="259.0" layoutY="95.0" mnemonicParsing="false" text="Darki" toggleGroup="$select" />
-      <ImageView fx:id="imgviewDarki" fitHeight="85.0" fitWidth="83.0" layoutX="249.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imgviewMark" fitHeight="85.0" fitWidth="83.0" layoutX="451.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-      <RadioButton fx:id="rbMark" layoutX="467.0" layoutY="104.0" mnemonicParsing="false" text="Mark" toggleGroup="$select" />
+      <ImageView fx:id="imgviewSirQovun" fitHeight="136.0" fitWidth="133.0" layoutX="61.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+      <RadioButton fx:id="rbDarki" layoutX="239.0" layoutY="291.0" mnemonicParsing="false" text="Darki" toggleGroup="$select">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
+      <ImageView fx:id="imgviewDarki" fitHeight="127.0" fitWidth="116.0" layoutX="242.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgviewMark" fitHeight="127.0" fitWidth="116.0" layoutX="440.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <RadioButton fx:id="rbMark" layoutX="468.0" layoutY="292.0" mnemonicParsing="false" text="Mark" toggleGroup="$select">
+         <font>
+            <Font size="15.0" />
+         </font></RadioButton>
    </children>
 </Pane>

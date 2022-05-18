@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane fx:id="pane" stylesheets="@howtoplay.css" fx:controller="com.darkforest.darkforest.Controladores.ControllerHowToPlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btBack" layoutX="595.0" layoutY="411.0" mnemonicParsing="false" onAction="#back" text="Back" />
+   </children>
+</Pane>
