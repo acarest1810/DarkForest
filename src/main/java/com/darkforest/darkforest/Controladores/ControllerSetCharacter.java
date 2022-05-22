@@ -39,22 +39,15 @@ public class ControllerSetCharacter {
 
     public void initialize() throws IOException {
         detectCharacter();
-        setImgview("src/main/resources/Characters/sir_qovun.png",imgviewSirQovun);
-        setImgview("src/main/resources/Characters/Darki.png",imgviewDarki);
-        setImgview("src/main/resources/Characters/Mark.png",imgviewMark);
+        setImgview("sir_qovun.png",imgviewSirQovun);
+        setImgview("Darki.png",imgviewDarki);
+        setImgview("Mark.png",imgviewMark);
     }
 
     //Setea la imagen, ahorra código
     public void setImgview(String path,ImageView imgv) {
-        File file = new File(path);
-        String localUrl = null;
-        try {
-            localUrl = file.toURI().toURL().toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Image imageSirQovun = new Image(localUrl, false);
-        imgv.setImage(imageSirQovun);
+        Image image = new Image(this.getClass().getResource("/Characters/"+path).toString());
+        imgv.setImage(image);
     }
 
     //Detecta que personaje se ha seleccionado anteriormente, si nunca ha jugado, el por defecto será Sir Qovun

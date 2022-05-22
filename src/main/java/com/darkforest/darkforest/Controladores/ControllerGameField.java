@@ -503,11 +503,14 @@ public class ControllerGameField {
         keytype = lnr.readLine();
         pj=new Player(name,hp,slots,keytype);
         if(pj.getName().equals("Sir Qovun")){
-            setImgvCharacter("src/main/resources/Characters/sir_qovun.png");
+            Image image = new Image(this.getClass().getResource("/Characters/sir_qovun.png").toString());
+            imgvCharacter.setImage(image);
         }else if(pj.getName().equals("Darki")){
-            setImgvCharacter("src/main/resources/Characters/Darki.png");
+            Image image = new Image(this.getClass().getResource("/Characters/Darki.png").toString());
+            imgvCharacter.setImage(image);
         }else if(pj.getName().equals("Mark")){
-            setImgvCharacter("src/main/resources/Characters/Mark.png");
+            Image image = new Image(this.getClass().getResource("/Characters/Mark.png").toString());
+            imgvCharacter.setImage(image);
         }
     }
 
@@ -632,19 +635,6 @@ public class ControllerGameField {
         }while(!salir);
     }
 
-    //Set del imagen view del personaje
-    public void setImgvCharacter(String path){
-        File file = new File(path);
-        String localUrl = null;
-        try {
-            localUrl = file.toURI().toURL().toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Image image = new Image(localUrl, false);
-        imgvCharacter.setImage(image);
-    }
-
     //Set del corazon de la vida
     public void setHeart(){
         Image imageHeart = getPngImage("heart");
@@ -655,14 +645,7 @@ public class ControllerGameField {
 
     //Devuelve png en una image
     public Image getPngImage(String name){
-        File file = new File("src/main/resources/img/"+name+".png");
-        String localUrl = null;
-        try {
-            localUrl = file.toURI().toURL().toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Image image = new Image(localUrl, false);
+        Image image = new Image(this.getClass().getResource("/img/"+name+".png").toString());
         return image;
     }
 
