@@ -44,7 +44,8 @@ public class ControllerGameField {
 
     //Variables para controlar el juego
     String name="",keytype="";
-    int hp=0,slots=0,hptotal=0,sizeX=10,sizeY=10,totalX=0,countKey=0,countFalseKey=0,slotsfilled=0,shieldcount=0;
+    int hp=0,slots=0,hptotal=0,sizeX=10,sizeY=10,totalX=0,countKey=0,countFalseKey=0,
+            slotsfilled=0,shieldcount=0,pastXgrunt=0,pastYgrunt=0,pastXgrunt2=0,pastYgrunt2=0;
     int[] inventory;
     double posXActual, posYActual,posXAnterior,posYAnterior;
     //Diferentes estados de las llaves y detección del final del juego
@@ -157,8 +158,6 @@ public class ControllerGameField {
 
     //Actualiza la zona anterior y actual del jugador
     public void updateTableActual(double x, double y){
-        Image image = getPngImage("yellow");
-        arrayImageView[(int) y][(int) x].setImage(image);
         if((statusTable[(int) y][(int) x]==0) || (statusTable[(int) y][(int) x]==2)){
             statusImgView.setImage(null);
             statusTable[(int) y][(int) x]=1;
@@ -341,7 +340,12 @@ public class ControllerGameField {
             Image img=getPngImage("tower");
             statusImgView.setImage(img);
             statusTable[(int) y][(int) x]=18;
-            statusLabel.setText("Enemy 1:\nX = "+grunt.getPosX()+"\nY = "+grunt.getPosY()+"\nEnemy 2:\nX = "+grunt2.getPosX()+"\nY = "+grunt2.getPosY());
+            showEnemy(grunt);
+            pastXgrunt=grunt.getPosX();
+            pastYgrunt=grunt.getPosY();
+            pastXgrunt2=grunt2.getPosX();
+            pastYgrunt2=grunt2.getPosY();
+            showEnemy(grunt2);
         }else if((statusTable[(int) y][(int) x]==22)){
             statusImgView.setImage(null);
             statusTable[(int) y][(int) x]=21;
@@ -356,6 +360,8 @@ public class ControllerGameField {
             statusTable[(int) y][(int) x]=21;
             statusLabel.setText("");
         }
+        Image image = getPngImage("yellow");
+        arrayImageView[(int) y][(int) x].setImage(image);
     }
 
     public void updateTableAnterior(double x, double y){
@@ -387,6 +393,8 @@ public class ControllerGameField {
             Image image = getPngImage("tower");
             arrayImageView[(int) y][(int) x].setImage(image);
             statusTable[(int) y][(int) x]=20;
+            backToNormal(pastXgrunt,pastYgrunt);
+            backToNormal(pastXgrunt2,pastYgrunt2);
         }else if(statusTable[(int) y][(int) x]==21){
             Image image = getPngImage("blue");
             arrayImageView[(int) y][(int) x].setImage(image);
@@ -627,6 +635,7 @@ public class ControllerGameField {
                 enemy.setPosX((int) (Math.random() * 10));
                 enemy.setPosY((int) (Math.random() * 10));
             }
+            //No puedenacceder a zonas importantes
             if(statusTable[enemy.getPosY()][enemy.getPosX()]<=8){
                 salir=true;
             }else{
@@ -647,6 +656,26 @@ public class ControllerGameField {
     public Image getPngImage(String name){
         Image image = new Image(this.getClass().getResource("/img/"+name+".png").toString());
         return image;
+    }
+
+    //Muestra los enemigos en el mapa
+    public void showEnemy(Enemy enemy){
+        Image image = getPngImage("grunt");
+        arrayImageView[enemy.getPosY()][enemy.getPosX()].setImage(image);
+    }
+
+    //Regresa la imagen de donde estaban los enemigos a la normalidad
+    public void backToNormal(int x,int y){
+        if((statusTable[(int) y][(int) x]==0) || (statusTable[(int) y][(int) x]==4) || (statusTable[(int) y][(int) x]==6)){
+            Image image = getPngImage("red");
+            arrayImageView[y][x].setImage(image);
+        }else if(statusTable[(int) y][(int) x]==2){
+            Image image = getPngImage("green");
+            arrayImageView[y][x].setImage(image);
+        }else if((statusTable[(int) y][(int) x]==3) || (statusTable[(int) y][(int) x]==7)) {
+            Image image = getPngImage("blue");
+            arrayImageView[y][x].setImage(image);
+        }
     }
 
     public void finishGame(ActionEvent actionEvent) throws IOException {
