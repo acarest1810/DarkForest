@@ -32,7 +32,7 @@ public class ControllerMainMenu {
     private Button btAbout;
 
     public void initialize() throws IOException {
-        File charinfo=new File("D:\\IdeaProjects\\DarkForest\\src\\main\\resources\\characterinfo\\personaje.txt");
+        File charinfo=new File(System.getProperty("user.dir"), "personaje.txt");
         //Información del personaje utilizado por defecto si no ha jugado antes
         if(!charinfo.exists()){
             charinfo.createNewFile();
@@ -41,9 +41,7 @@ public class ControllerMainMenu {
             charwritter.write("\n");
             charwritter.write("3");
             charwritter.write("\n");
-            charwritter.write("1");
-            charwritter.write("\n");
-            charwritter.write("6");
+            charwritter.write("7");
             charwritter.write("\n");
             charwritter.write("black");
             charwritter.close();

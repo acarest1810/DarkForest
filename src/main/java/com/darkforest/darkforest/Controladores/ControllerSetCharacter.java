@@ -27,7 +27,7 @@ public class ControllerSetCharacter {
     private RadioButton rbSirQovun;
     @javafx.fxml.FXML
     private RadioButton rbDarki;
-    private File charinfo = new File("D:\\IdeaProjects\\DarkForest\\src\\main\\resources\\characterinfo\\personaje.txt");
+    private File charinfo = new File(System.getProperty("user.dir"), "personaje.txt");
     @javafx.fxml.FXML
     private ImageView imgviewDarki;
     @javafx.fxml.FXML
