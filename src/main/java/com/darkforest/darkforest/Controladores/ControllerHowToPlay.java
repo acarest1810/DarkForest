@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,7 @@ public class ControllerHowToPlay {
     @javafx.fxml.FXML
     private Pane pane;
 
+    //Vuelve al main menu
     @javafx.fxml.FXML
     public void back(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("main-menu.fxml"));
@@ -27,6 +29,7 @@ public class ControllerHowToPlay {
         stage.setMinHeight(400);
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();

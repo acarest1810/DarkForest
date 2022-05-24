@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -56,6 +57,7 @@ public class ControllerMainMenu {
         stage.setMinWidth(650);
         stage.setMinHeight(450);
         stage.setMaxWidth(750);
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setMaxHeight(550);
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
@@ -72,6 +74,7 @@ public class ControllerMainMenu {
         stage.setMinHeight(400);
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Select Character");
         stage.setScene(scene);
         stage.show();
@@ -88,6 +91,7 @@ public class ControllerMainMenu {
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
         stage.setTitle("Dark Forest");
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

@@ -3,6 +3,7 @@ package com.darkforest.darkforest;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class MainMenu extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setMinWidth(650);
         stage.setMinHeight(450);
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();

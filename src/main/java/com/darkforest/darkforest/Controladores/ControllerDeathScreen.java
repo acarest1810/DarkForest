@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -23,6 +24,7 @@ public class ControllerDeathScreen {
         Scene scene = new Scene(fxmlLoader.load(),600,400);
         Stage stage = new Stage();
         stage.setTitle("Dark Forest");
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

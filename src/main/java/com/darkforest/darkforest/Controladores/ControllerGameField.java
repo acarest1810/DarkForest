@@ -5,6 +5,8 @@ import com.darkforest.darkforest.Class.Item;
 import com.darkforest.darkforest.Class.Player;
 import com.darkforest.darkforest.MainMenu;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -12,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -78,6 +82,8 @@ public class ControllerGameField {
         controlTable();
         hptotal=pj.getHp();
         labelTxt.setText(pj.getHp()+"/"+hptotal);
+        //El jugador se puede mover con WASD
+        pane.setOnKeyPressed(keyListener);
     }
 
     //Genera los distintos objetos y zonas del juego
@@ -522,6 +528,7 @@ public class ControllerGameField {
         }
     }
 
+    //Se mueve con los botones
     @javafx.fxml.FXML
     public void movement(ActionEvent actionEvent) throws IOException {
         boolean salir=false;
@@ -533,37 +540,13 @@ public class ControllerGameField {
             }
         }while(!salir);
         if(actionEvent.getSource()==btUp){
-            if((int) posYActual!=0){
-                posYAnterior=posYActual;
-                posXAnterior=posXActual;
-                posYActual--;
-                updateTableActual(posXActual,posYActual);
-                updateTableAnterior(posXAnterior,posYAnterior);
-            }
+            moveUp();
         }else if(actionEvent.getSource()==btDown) {
-            if ((int) posYActual != sizeX-1) {
-                posYAnterior = posYActual;
-                posXAnterior = posXActual;
-                posYActual++;
-                updateTableActual(posXActual, posYActual);
-                updateTableAnterior(posXAnterior, posYAnterior);
-            }
+            moveDown();
         }else if(actionEvent.getSource()==btRight) {
-            if ((int) posXActual != sizeY-1) {
-                posYAnterior = posYActual;
-                posXAnterior = posXActual;
-                posXActual++;
-                updateTableActual(posXActual, posYActual);
-                updateTableAnterior(posXAnterior, posYAnterior);
-            }
+            moveRight();
         }else if(actionEvent.getSource()==btLeft) {
-            if ((int) posXActual != 0) {
-                posYAnterior = posYActual;
-                posXAnterior = posXActual;
-                posXActual--;
-                updateTableActual(posXActual, posYActual);
-                updateTableAnterior(posXAnterior, posYAnterior);
-            }
+            moveLeft();
         }
         System.out.println("Jugador: "+(int) posXActual+" "+(int) posYActual);
         System.out.println("Grunt: "+grunt.getPosX()+" "+grunt.getPosY());
@@ -574,6 +557,92 @@ public class ControllerGameField {
             finishGame(actionEvent);
         }else if(pj.getHp()==0){
             finishDeathGame(actionEvent);
+        }
+    }
+
+    //Se mueve con las teclas WASD
+    private EventHandler<KeyEvent> keyListener = new EventHandler<>() {
+        @Override
+        public void handle(KeyEvent event) {
+            if((event.getCode() == KeyCode.W) || (event.getCode() == KeyCode.S) ||
+                    (event.getCode() == KeyCode.A) || (event.getCode() == KeyCode.D)){
+                boolean salir = false;
+                do {
+                    enemyMove(grunt);
+                    enemyMove(grunt2);
+                    if ((grunt.getPosX() != grunt2.getPosX()) || (grunt.getPosY() != grunt2.getPosY())) {
+                        salir = true;
+                    }
+                } while (!salir);
+                if (event.getCode() == KeyCode.W) {
+                    moveUp();
+                } else if (event.getCode() == KeyCode.S) {
+                    moveDown();
+                } else if (event.getCode() == KeyCode.D) {
+                    moveRight();
+                } else if (event.getCode() == KeyCode.A) {
+                    moveLeft();
+                }
+                System.out.println("Jugador: " + (int) posXActual + " " + (int) posYActual);
+                System.out.println("Grunt: " + grunt.getPosX() + " " + grunt.getPosY());
+                System.out.println("Grunt2: " + grunt2.getPosX() + " " + grunt2.getPosY());
+                isHit(grunt);
+                isHit(grunt2);
+                if (isFinished) {
+                    try {
+                        finishGame(event);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (pj.getHp() == 0) {
+                    try {
+                        finishDeathGame(event);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                event.consume();
+            }
+        }
+    };
+
+    public void moveUp(){
+        if((int) posYActual!=0){
+            posYAnterior=posYActual;
+            posXAnterior=posXActual;
+            posYActual--;
+            updateTableActual(posXActual,posYActual);
+            updateTableAnterior(posXAnterior,posYAnterior);
+        }
+    }
+
+    public void moveDown(){
+        if ((int) posYActual != sizeX-1) {
+            posYAnterior = posYActual;
+            posXAnterior = posXActual;
+            posYActual++;
+            updateTableActual(posXActual, posYActual);
+            updateTableAnterior(posXAnterior, posYAnterior);
+        }
+    }
+
+    public void moveRight(){
+        if ((int) posXActual != sizeY-1) {
+            posYAnterior = posYActual;
+            posXAnterior = posXActual;
+            posXActual++;
+            updateTableActual(posXActual, posYActual);
+            updateTableAnterior(posXAnterior, posYAnterior);
+        }
+    }
+
+    public void moveLeft(){
+        if ((int) posXActual != 0) {
+            posYAnterior = posYActual;
+            posXAnterior = posXActual;
+            posXActual--;
+            updateTableActual(posXActual, posYActual);
+            updateTableAnterior(posXAnterior, posYAnterior);
         }
     }
 
@@ -678,20 +747,24 @@ public class ControllerGameField {
         }
     }
 
-    public void finishGame(ActionEvent actionEvent) throws IOException {
+    //Pantalla de victoria
+    public void finishGame(Event actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("win-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),600,400);
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void finishDeathGame(ActionEvent actionEvent) throws IOException {
+    //Pantalla de muerte
+    public void finishDeathGame(Event actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("death-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),600,400);
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();

@@ -106,6 +106,7 @@ public class ControllerSetCharacter {
         Scene scene = new Scene(fxmlLoader.load(),600,400);
         Stage stage = new Stage();
         stage.setTitle("Dark Forest");
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
