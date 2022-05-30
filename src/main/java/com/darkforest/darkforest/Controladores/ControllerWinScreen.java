@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,8 @@ public class ControllerWinScreen {
     private Button btReturn;
     @javafx.fxml.FXML
     private Pane pane;
+    @javafx.fxml.FXML
+    private ImageView imgView;
 
     //Vuelve al main menu
     @javafx.fxml.FXML

@@ -57,8 +57,8 @@ public class ControllerMainMenu {
         stage.setMinWidth(650);
         stage.setMinHeight(450);
         stage.setMaxWidth(750);
-        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setMaxHeight(550);
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
         stage.show();
@@ -68,10 +68,10 @@ public class ControllerMainMenu {
     @FXML
     public void selectCharacter(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("select-character.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),600,400);
+        Scene scene = new Scene(fxmlLoader.load(),650,450);
         Stage stage = new Stage();
-        stage.setMinWidth(600);
-        stage.setMinHeight(400);
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));

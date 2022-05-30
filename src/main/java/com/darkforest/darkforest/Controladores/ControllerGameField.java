@@ -162,7 +162,7 @@ public class ControllerGameField {
         }while(i<1);
     }
 
-    //Actualiza la zona anterior y actual del jugador
+    //Actualiza la zona actual del jugador
     public void updateTableActual(double x, double y){
         if((statusTable[(int) y][(int) x]==0) || (statusTable[(int) y][(int) x]==2)){
             statusImgView.setImage(null);
@@ -370,6 +370,7 @@ public class ControllerGameField {
         arrayImageView[(int) y][(int) x].setImage(image);
     }
 
+    //Actualiza la zona anterior por que el que el jugador ha pasado
     public void updateTableAnterior(double x, double y){
         if(statusTable[(int) y][(int) x]==1){
             Image image = getPngImage("green");
@@ -750,8 +751,12 @@ public class ControllerGameField {
     //Pantalla de victoria
     public void finishGame(Event actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("win-screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),600,400);
+        Scene scene = new Scene(fxmlLoader.load(),650,450);
         Stage stage = new Stage();
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
+        stage.setMaxWidth(750);
+        stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);
@@ -762,8 +767,12 @@ public class ControllerGameField {
     //Pantalla de muerte
     public void finishDeathGame(Event actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("death-screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),600,400);
+        Scene scene = new Scene(fxmlLoader.load(),650,450);
         Stage stage = new Stage();
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
+        stage.setMaxWidth(750);
+        stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
         stage.setScene(scene);

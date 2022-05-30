@@ -5,3 +5,12 @@
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
 }
+
+.button{
+	-fx-background-color: radial-gradient(center 50% 0%, radius 100%, #eda60c, #e8d20c);
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+	-fx-font-size:15px;
+    -fx-background-insets: 5, 5, 5, 5;
+}
