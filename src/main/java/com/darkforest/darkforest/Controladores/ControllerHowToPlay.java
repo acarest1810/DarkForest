@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+//Proyecto de Fin de curso creador por Antonio Cara Esteban
 public class ControllerHowToPlay {
 
     @javafx.fxml.FXML

@@ -1,10 +1,11 @@
 package com.darkforest.darkforest.Class;
 
 public class Player {
+
    private int hp,slots;
    private String name,keytype;
 
-   //Constructor
+    //Proyecto de fin de curso creador por Antonio Cara Esteban
 
     public Player(String name, int hp, int slots, String keytype) {
         this.name = name;

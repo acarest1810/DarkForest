@@ -14,8 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.MalformedURLException;
 
+//Proyecto de Fin de curso creador por Antonio Cara Esteban
 public class ControllerSetCharacter {
     @javafx.fxml.FXML
     private ToggleGroup select;

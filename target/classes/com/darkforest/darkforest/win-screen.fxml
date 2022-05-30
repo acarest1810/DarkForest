@@ -7,7 +7,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@winscreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.darkforest.darkforest.Controladores.ControllerWinScreen">
    <children>
-      <Button fx:id="btReturn" layoutX="235.0" layoutY="311.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Return to Main Menu" />
+      <Button fx:id="btReturn" layoutX="219.0" layoutY="311.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Return to Main Menu" />
       <ImageView fx:id="imgView" fitHeight="334.0" fitWidth="356.0" layoutX="133.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/winscreen.png" />

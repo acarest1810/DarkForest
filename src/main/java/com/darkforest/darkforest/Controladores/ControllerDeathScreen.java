@@ -10,9 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+//Proyecto de fin de curso creador por Antonio Cara Esteban
 public class ControllerDeathScreen {
     @javafx.fxml.FXML
     private Button btReturn;

@@ -5,9 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+//Proyecto de Fin de curso creador por Antonio Cara Esteban
 public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws IOException {

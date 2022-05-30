@@ -74,6 +74,7 @@ public class ControllerGameField {
     int[][] statusTable;
 
 
+    //Proyecto de fin de curso creador por Antonio Cara Esteban
     public void initialize() throws IOException {
         File charinfo=new File(System.getProperty("user.dir"), "personaje.txt");
         characterChoosed(charinfo);

@@ -2,6 +2,8 @@ package com.darkforest.darkforest.Class;
 
 public class Enemy {
 
+    //Proyecto de fin de curso creador por Antonio Cara Esteban
+
     private int posX,posY;
 
     public Enemy(int posX, int posY) {
