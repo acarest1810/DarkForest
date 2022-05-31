@@ -20,7 +20,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.MalformedURLException;
 
 public class ControllerGameField {
     @javafx.fxml.FXML
@@ -42,9 +41,9 @@ public class ControllerGameField {
     @javafx.fxml.FXML
     private ImageView statusImgView;
     @javafx.fxml.FXML
-    private Label statusLabel;
-    @javafx.fxml.FXML
     private ImageView imgViewShield1;
+    @javafx.fxml.FXML
+    private Button btBack;
 
     //Variables para controlar el juego
     String name="",keytype="";
@@ -72,6 +71,7 @@ public class ControllerGameField {
     //18 = El jugador está en la torre; 19 = Donde se ha generado la torre; 20 = El jugador sabe donde está la torre
     //21 = El jugador está en un escudo; 22 = Donde se ha generado un escudo; 23 = El jugador sabe donde estaba un escudo
     int[][] statusTable;
+
 
 
     //Proyecto de fin de curso creador por Antonio Cara Esteban
@@ -168,7 +168,6 @@ public class ControllerGameField {
         if((statusTable[(int) y][(int) x]==0) || (statusTable[(int) y][(int) x]==2)){
             statusImgView.setImage(null);
             statusTable[(int) y][(int) x]=1;
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==4) || (statusTable[(int) y][(int) x]==3)){
             statusImgView.setImage(null);
             if(statusTable[(int) y][(int) x]==4){
@@ -198,7 +197,6 @@ public class ControllerGameField {
             }else{
                 statusTable[(int) y][(int) x]=5;
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==6) || (statusTable[(int) y][(int) x]==7)){
             statusImgView.setImage(null);
             if(statusTable[(int) y][(int) x]==6){
@@ -228,7 +226,6 @@ public class ControllerGameField {
             }else{
                 statusTable[(int) y][(int) x]=8;
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==10) || (statusTable[(int) y][(int) x]==11)){
             Image img=getPngImage("door");
             statusImgView.setImage(img);
@@ -236,7 +233,6 @@ public class ControllerGameField {
             if(fullKey){
                 isFinished=true;
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==13) || (statusTable[(int) y][(int) x]==14)){
             Image img=getPngImage("mold");
             statusImgView.setImage(img);
@@ -283,7 +279,6 @@ public class ControllerGameField {
                     itemsArrayImageView[dyedPiece3.getPiece()].setImage(null);
                 }
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==16) || (statusTable[(int) y][(int) x]==17)){
             Image img=getPngImage("paint");
             statusImgView.setImage(img);
@@ -342,7 +337,6 @@ public class ControllerGameField {
                     dyedKey3=true;
                 }
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==19) || (statusTable[(int) y][(int) x]==20)){
             Image img=getPngImage("tower");
             statusImgView.setImage(img);
@@ -361,11 +355,9 @@ public class ControllerGameField {
                 Image imageShield=getPngImage("shield");
                 imgViewShield1.setImage(imageShield);
             }
-            statusLabel.setText("");
         }else if((statusTable[(int) y][(int) x]==23)){
             statusImgView.setImage(null);
             statusTable[(int) y][(int) x]=21;
-            statusLabel.setText("");
         }
         Image image = getPngImage("yellow");
         arrayImageView[(int) y][(int) x].setImage(image);
@@ -776,6 +768,22 @@ public class ControllerGameField {
         stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setTitle("Dark Forest");
+        stage.setScene(scene);
+        stage.show();
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
+
+    @javafx.fxml.FXML
+    public void back(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("main-menu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setMinWidth(650);
+        stage.setMinHeight(450);
+        stage.setMaxWidth(750);
+        stage.setMaxHeight(550);
+        stage.setTitle("Dark Forest");
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

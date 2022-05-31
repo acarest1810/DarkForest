@@ -103,7 +103,7 @@ public class ControllerSetCharacter {
             charwritter.close();
         }
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenu.class.getResource("main-menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),650,450);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = new Stage();
         stage.setMinWidth(650);
         stage.setMinHeight(450);

@@ -14,8 +14,8 @@
       <Button fx:id="btDown" layoutX="246.0" layoutY="373.0" mnemonicParsing="false" onAction="#movement" prefHeight="31.0" prefWidth="63.0" text="Down" />
       <Button fx:id="btRight" layoutX="302.0" layoutY="348.0" mnemonicParsing="false" onAction="#movement" text="Right" />
       <Button fx:id="btUp" layoutX="246.0" layoutY="322.0" mnemonicParsing="false" onAction="#movement" prefHeight="31.0" prefWidth="63.0" text="Up" />
-      <ImageView fx:id="statusImgView" fitHeight="97.0" fitWidth="90.0" layoutX="470.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="statusLabel" layoutX="369.0" layoutY="298.0" prefHeight="97.0" prefWidth="90.0" />
+      <ImageView fx:id="statusImgView" fitHeight="97.0" fitWidth="90.0" layoutX="383.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgViewShield1" fitHeight="36.0" fitWidth="44.0" layoutX="113.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btBack" layoutX="491.0" layoutY="348.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="90.0" text="Exit Game" />
    </children>
 </Pane>
