@@ -44,6 +44,8 @@ public class ControllerGameField {
     private ImageView imgViewShield1;
     @javafx.fxml.FXML
     private Button btBack;
+    @javafx.fxml.FXML
+    private ImageView imgViewGrunt;
 
     //Variables para controlar el juego
     String name="",keytype="";
@@ -73,7 +75,6 @@ public class ControllerGameField {
     int[][] statusTable;
 
 
-
     //Proyecto de fin de curso creador por Antonio Cara Esteban
     public void initialize() throws IOException {
         File charinfo=new File(System.getProperty("user.dir"), "personaje.txt");
@@ -99,6 +100,7 @@ public class ControllerGameField {
         grunt2 = new Enemy((int) (Math.random()*sizeX), (int) (Math.random()*sizeY));
         updateTableActual(posXActual,posYActual);
         int i=0;
+        //Genera trozo de llave
         do{
             double posObjetoX=Math.random()*sizeX;
             double posObjetoY=Math.random()*sizeY;
@@ -108,6 +110,7 @@ public class ControllerGameField {
             }
         }while(i<3);
         i=0;
+        //Genera trozo de llave inservible
         do{
             double posObjetoX=Math.random()*sizeX;
             double posObjetoY=Math.random()*sizeY;
@@ -117,6 +120,7 @@ public class ControllerGameField {
             }
         }while(i<3);
         i=0;
+        //Genera puerta
         do{
             double posPuertaX=Math.random()*sizeX;
             double posPuertaY=Math.random()*sizeY;
@@ -126,6 +130,7 @@ public class ControllerGameField {
             }
         }while(i<1);
         i=0;
+        //Genera molde
         do{
             double posMoldeX=Math.random()*sizeX;
             double posMoldeY=Math.random()*sizeY;
@@ -135,6 +140,7 @@ public class ControllerGameField {
             }
         }while(i<1);
         i=0;
+        //Genera cubo de pintura
         do{
             double posPaintX=Math.random()*sizeX;
             double posPaintY=Math.random()*sizeY;
@@ -144,6 +150,7 @@ public class ControllerGameField {
             }
         }while(i<1);
         i=0;
+        //Genera torre
         do{
             double posTowerX=Math.random()*sizeX;
             double posTowerY=Math.random()*sizeY;
@@ -153,6 +160,7 @@ public class ControllerGameField {
             }
         }while(i<1);
         i=0;
+        //Genera escudo
         do{
             double posTowerX=Math.random()*sizeX;
             double posTowerY=Math.random()*sizeY;
@@ -649,13 +657,15 @@ public class ControllerGameField {
                     pj.setHp(pj.getHp()-1);
                     labelTxt.setText(pj.getHp()+"/"+hptotal);
                     Image img=getPngImage("grunt");
-                    statusImgView.setImage(img);
+                    GruntShowThread gr=new GruntShowThread(img,imgViewGrunt);
+                    new Thread(gr).start();
                     break;
                 case 1:
                     imgViewShield1.setImage(null);
-                    Image img2=getPngImage("grunt");
-                    statusImgView.setImage(img2);
                     shieldcount--;
+                    Image img2=getPngImage("grunt");
+                    GruntShowThread gr2=new GruntShowThread(img2,imgViewGrunt);
+                    new Thread(gr2).start();
                     break;
             }
         }

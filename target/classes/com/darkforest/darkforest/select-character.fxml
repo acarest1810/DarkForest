@@ -10,7 +10,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@selectcharacter.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.darkforest.darkforest.Controladores.ControllerSetCharacter">
    <children>
-      <RadioButton fx:id="rbSirQovun" layoutX="73.0" layoutY="259.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="109.0" text="Sir Qovun">
+      <RadioButton fx:id="rbSirQovun" layoutX="49.0" layoutY="259.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="109.0" text="Sir Qovun">
          <toggleGroup>
             <ToggleGroup fx:id="select" />
          </toggleGroup>
@@ -20,7 +20,7 @@
       </RadioButton>
       <Button fx:id="btConfirm" layoutX="534.0" layoutY="355.0" mnemonicParsing="false" onAction="#confirm" text="Confirm" />
       <ImageView fx:id="imgviewSirQovun" fitHeight="107.0" fitWidth="133.0" layoutX="61.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
-      <RadioButton fx:id="rbDarki" layoutX="239.0" layoutY="291.0" mnemonicParsing="false" text="Darki" toggleGroup="$select">
+      <RadioButton fx:id="rbDarki" layoutX="250.0" layoutY="291.0" mnemonicParsing="false" text="Darki" toggleGroup="$select">
          <font>
             <Font size="15.0" />
          </font></RadioButton>
@@ -45,12 +45,12 @@
             <Image url="@../../../img/heart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="239.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="239.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/heart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="285.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="269.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/heart.png" />
          </image>
