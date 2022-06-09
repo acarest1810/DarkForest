@@ -761,7 +761,7 @@ public class ControllerGameField {
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
-        stage.setTitle("Dark Forest");
+        stage.setTitle("Victory");
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -777,7 +777,7 @@ public class ControllerGameField {
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
-        stage.setTitle("Dark Forest");
+        stage.setTitle("Defeat");
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

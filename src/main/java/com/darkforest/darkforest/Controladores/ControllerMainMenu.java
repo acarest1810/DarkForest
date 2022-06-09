@@ -89,14 +89,11 @@ public class ControllerMainMenu {
         stage.setMinHeight(450);
         stage.setMaxWidth(750);
         stage.setMaxHeight(550);
-        stage.setTitle("Dark Forest");
+        stage.setTitle("How to play");
         stage.getIcons().add(new Image(this.getClass().getResource("/img/icon.png").toString()));
         stage.setScene(scene);
         stage.show();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    @FXML
-    public void about(ActionEvent actionEvent) {
-    }
 }
