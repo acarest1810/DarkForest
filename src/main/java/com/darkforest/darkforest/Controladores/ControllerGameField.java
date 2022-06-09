@@ -518,15 +518,19 @@ public class ControllerGameField {
         slots = Integer.parseInt(lnr.readLine());
         keytype = lnr.readLine();
         pj=new Player(name,hp,slots,keytype);
-        if(pj.getName().equals("Sir Qovun")){
-            Image image = new Image(this.getClass().getResource("/Characters/sir_qovun.png").toString());
-            imgvCharacter.setImage(image);
-        }else if(pj.getName().equals("Darki")){
-            Image image = new Image(this.getClass().getResource("/Characters/Darki.png").toString());
-            imgvCharacter.setImage(image);
-        }else if(pj.getName().equals("Mark")){
-            Image image = new Image(this.getClass().getResource("/Characters/Mark.png").toString());
-            imgvCharacter.setImage(image);
+        try{
+            if(pj.getName().equals("Sir Qovun")){
+                Image image = new Image(this.getClass().getResource("/Characters/sir_qovun.png").toString());
+                imgvCharacter.setImage(image);
+            }else if(pj.getName().equals("Darki")){
+                Image image = new Image(this.getClass().getResource("/Characters/Darki.png").toString());
+                imgvCharacter.setImage(image);
+            }else if(pj.getName().equals("Mark")){
+                Image image = new Image(this.getClass().getResource("/Characters/Mark.png").toString());
+                imgvCharacter.setImage(image);
+            }
+        }catch (Exception e){
+            imgvCharacter.setImage(null);
         }
     }
 
@@ -550,9 +554,6 @@ public class ControllerGameField {
         }else if(actionEvent.getSource()==btLeft) {
             moveLeft();
         }
-        System.out.println("Jugador: "+(int) posXActual+" "+(int) posYActual);
-        System.out.println("Grunt: "+grunt.getPosX()+" "+grunt.getPosY());
-        System.out.println("Grunt2: "+grunt2.getPosX()+" "+grunt2.getPosY());
         isHit(grunt);
         isHit(grunt2);
         if(isFinished){
@@ -585,9 +586,6 @@ public class ControllerGameField {
                 } else if (event.getCode() == KeyCode.A) {
                     moveLeft();
                 }
-                System.out.println("Jugador: " + (int) posXActual + " " + (int) posYActual);
-                System.out.println("Grunt: " + grunt.getPosX() + " " + grunt.getPosY());
-                System.out.println("Grunt2: " + grunt2.getPosX() + " " + grunt2.getPosY());
                 isHit(grunt);
                 isHit(grunt2);
                 if (isFinished) {
