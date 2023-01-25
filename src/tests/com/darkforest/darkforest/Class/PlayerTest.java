@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
+    //Pruebas sobe el funcionamiento sobre los set y gets
     @Test
     void getName() {
         Player pj = new Player("Sir qovun",3,7,"black");

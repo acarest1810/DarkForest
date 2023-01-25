@@ -10,6 +10,7 @@ public class GruntShowThread extends Thread{
     Image img;
     ImageView imgView;
 
+    //Hilo para mostrar los enemigos por 1,5 segundos cuando el jugador recibe un golpe
     public synchronized void run(){
         int i=0;
         imgView.setImage(img);
